@@ -6,23 +6,6 @@ import java.util.HashMap;
  * @author b4yerl
  */
 public class TwoSum {
-  public static void main(String[] args) {
-    int[] testArray = new int[100000];
-    for(int i = 0; i < 100000; i++) {
-      testArray[i] = i + 1;
-    }
-
-    long startTime = System.currentTimeMillis();
-    twoSumOrderN(testArray, 199999);
-    long finishTime = System.currentTimeMillis();
-    System.out.println("Time taken for O(N): " + (finishTime - startTime) + "ms");
-
-    startTime = System.currentTimeMillis();
-    twoSumOrderSquared(testArray, 199999);
-    finishTime = System.currentTimeMillis();
-    System.out.println("Time taken for O(N^2): " + (finishTime - startTime) + "ms");
-  }
-  
   /**
    * Método mais simples de solucionar o problema, basicamente aninhando dois loops e
    * gerando uma complexidade de O(N^2). O que fazemos é conferir cada soma possível até encontrar a resposta.
@@ -49,7 +32,7 @@ public class TwoSum {
   public static int[] twoSumOrderN(int[] nums, int target) {
     Map<Integer, Integer> possibilities = new HashMap<>();
     int[] indexes = new int[2];
-
+    
     for(int i = 0; i < nums.length; i++) {
       // Caso o elemento atual já esteja no nosso Map, apenas retornamos o index salvo com o atual
       if(possibilities.containsKey(nums[i])) {
@@ -63,5 +46,21 @@ public class TwoSum {
       }
     }
     return indexes;
+  }
+  public static void main(String[] args) {
+    int[] testArray = new int[100000];
+    for(int i = 0; i < 100000; i++) {
+      testArray[i] = i + 1;
+    }
+  
+    long startTime = System.currentTimeMillis();
+    twoSumOrderN(testArray, 199999);
+    long finishTime = System.currentTimeMillis();
+    System.out.println("Time taken for O(N): " + (finishTime - startTime) + "ms");
+  
+    startTime = System.currentTimeMillis();
+    twoSumOrderSquared(testArray, 199999);
+    finishTime = System.currentTimeMillis();
+    System.out.println("Time taken for O(N^2): " + (finishTime - startTime) + "ms");
   }
 }
